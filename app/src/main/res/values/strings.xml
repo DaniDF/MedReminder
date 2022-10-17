@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MedReminder</string>
+
+    <string name="button_new_sample_string">New sample</string>
 </resources>
