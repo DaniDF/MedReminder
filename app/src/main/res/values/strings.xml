@@ -2,4 +2,6 @@
     <string name="app_name">MedReminder</string>
 
     <string name="button_new_sample_string">New sample</string>
+
+    <string name="sample_number_default_text">XX</string>
 </resources>
