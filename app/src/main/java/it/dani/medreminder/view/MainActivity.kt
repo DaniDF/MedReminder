@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.gson.Gson
 import it.dani.medreminder.R
 import it.dani.medreminder.model.Sample
 import it.dani.medreminder.model.SampleDB
+import it.dani.medreminder.persistence.SampleDBPersistence
+import it.dani.medreminder.persistence.filepersistence.FileSampleDBPersistence
 import it.dani.medreminder.view.add.NewSampleActivity
 import java.io.*
 
@@ -18,16 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val gson = Gson()
+        val sampleDBPersistence : SampleDBPersistence = FileSampleDBPersistence(this.filesDir.path + File.separator + this.resources.getString(R.string.filename_sample_db))
 
-        var sampleDB = SampleDB()
-
-        try {
-            BufferedReader(FileReader(this.filesDir.path + File.separator + this.resources.getString(R.string.filename_sample_db))).use {
-                sampleDB = gson.fromJson(it,SampleDB::class.java)
-            }
+        val sampleDB = try {
+            sampleDBPersistence.loadDB()
         } catch (e : FileNotFoundException) {
             Log.e("SAMPLE_DB_FILE","Error: sampleDB file not found")
+            SampleDB()
         }
 
         //TODO riemipire i vari blocchetti con i dati appena caricati
@@ -40,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             val newSample = this.intent.getSerializableExtra("NEW_SAMPLE") as Sample?
             newSample?.let { sample ->
                 sampleDB.samples += sample
+                sampleDBPersistence.storeDB(sampleDB)
             }
         }
 
