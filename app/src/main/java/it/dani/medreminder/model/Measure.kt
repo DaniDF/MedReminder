@@ -1,3 +1,5 @@
 package it.dani.medreminder.model
 
-data class Measure(val measureLabel : MeasureTypes, val measureValue : Float)
+import java.io.Serializable
+
+data class Measure(val measureLabel : MeasureTypes, val measureValue : Float) : Serializable

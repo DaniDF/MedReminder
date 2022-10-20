@@ -40,16 +40,6 @@
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
 
 
             </LinearLayout>

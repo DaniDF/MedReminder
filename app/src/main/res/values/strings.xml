@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">MedReminder</string>
+    
+    <string name="filename_sample_db" translatable="false">sampleDB.json</string>
 
     <string name="button_new_sample_string">New sample</string>
 

@@ -1,3 +1,5 @@
 package it.dani.medreminder.model
 
-data class SampleDB(val samples : List<Sample> = ArrayList())
+import java.io.Serializable
+
+data class SampleDB(var samples : List<Sample> = ArrayList()) : Serializable
