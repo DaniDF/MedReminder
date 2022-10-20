@@ -7,4 +7,9 @@
     <string name="sample_label_default_text">label</string>
     <string name="sample_datetime_default_text">January 01, 1990</string>
     <string name="sample_expand_content_description">More data</string>
+
+    <string name="measure_type_heart_rate">Heart rate</string>
+    <string name="measure_type_blood_oxygenation">Blood oxygenation</string>
+    <string name="measure_type_blood_pressure">Blood pressure</string>
+    <string name="measure_type_glycemia">Glycemia</string>
 </resources>
