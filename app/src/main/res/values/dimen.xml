@@ -4,4 +4,6 @@
     <dimen name="sample_number_label_text_size">12sp</dimen>
     <dimen name="sample_number_margin_start">30dp</dimen>
     <dimen name="sample_padding">15dp</dimen>
+
+    <dimen name="sample_add_layout_margin">15dp</dimen>
 </resources>

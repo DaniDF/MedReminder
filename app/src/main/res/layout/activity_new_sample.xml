@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_sample_history"
+        android:id="@+id/layout_current_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/sample_add_layout_margin"
+        app:layout_constraintBottom_toBottoomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/text_current_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_current_date_default"
+            android:textSize="@dimen/sample_number_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/text_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_current_time_default"
+            android:textSize="@dimen/sample_number_text_size"
+            app:layout_constraintBottom_toBottoomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_current_date" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_new_sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sample_add_layout_margin"
+        android:background="@drawable/sample_shape"
+        app:layout_constraintBottom_toTopOf="@id/layout_save_sample"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_current_date">
+
         <ScrollView
-            android:id="@+id/scroll_sample_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottoomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,23 +66,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-                <include layout="@layout/sample_view" />
-
+                <include layout="@layout/add_sample_view" />
+                <include layout="@layout/add_sample_view" />
+                <include layout="@layout/add_sample_view" />
+                <include layout="@layout/add_sample_view" />
 
             </LinearLayout>
         </ScrollView>
@@ -58,7 +77,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_new_sample"
+        android:id="@+id/layout_save_sample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,8 +90,8 @@
             android:id="@+id/button_new_sample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_new_sample_string"
-            app:icon="@drawable/add_circle"
+            android:text="@string/button_save_sample_string"
+            app:icon="@drawable/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

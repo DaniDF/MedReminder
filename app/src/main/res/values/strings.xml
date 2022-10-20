@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MedReminder</string>
+    <string name="app_name" translatable="false">MedReminder</string>
 
     <string name="button_new_sample_string">New sample</string>
 
@@ -8,8 +8,18 @@
     <string name="sample_datetime_default_text">January 01, 1990</string>
     <string name="sample_expand_content_description">More data</string>
 
+    <string name="text_current_date_default"> January 01, 1990</string>
+    <string name="text_current_time_default"> 12:00</string>
+    <string name="button_save_sample_string">Save</string>
+
     <string name="measure_type_heart_rate">Heart rate</string>
     <string name="measure_type_blood_oxygenation">Blood oxygenation</string>
     <string name="measure_type_blood_pressure">Blood pressure</string>
     <string name="measure_type_glycemia">Glycemia</string>
+
+    <string name="measure_type_chooser_content_description">Measure type chooser</string>
+    <string name="measure_input_hint">Value</string>
+
+    <string name="measure_add_type">Add a new type</string>
+    <string name="measure_del_type">Delete this measure type</string>
 </resources>
