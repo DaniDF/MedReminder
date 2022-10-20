@@ -26,6 +26,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_sample_history_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -34,13 +35,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <!--
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
                 <include layout="@layout/sample_view" />
-
+                <include layout="@layout/sample_view" />
+                <include layout="@layout/sample_view" />
+                <include layout="@layout/sample_view" />
+                -->
 
             </LinearLayout>
         </ScrollView>
