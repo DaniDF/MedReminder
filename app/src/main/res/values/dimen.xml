@@ -6,4 +6,6 @@
     <dimen name="sample_padding">15dp</dimen>
 
     <dimen name="sample_add_layout_margin">15dp</dimen>
+
+    <dimen name="measure_label_max_width">150dp</dimen>
 </resources>
