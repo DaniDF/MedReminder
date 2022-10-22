@@ -21,6 +21,12 @@ import it.dani.medreminder.model.Sample
 import it.dani.medreminder.view.MainActivity
 import java.time.LocalDateTime
 
+/**
+ * @author Daniele
+ *
+ * This class implements the procedure for adding a new sample
+ */
+
 class NewSampleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,14 @@ class NewSampleActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This method add a add_sample_view.xml to the root [LinearLayout].
+     * According this method modifies the previews add buttons in remove buttons and changes their onClickListener
+     *
+     * @param[measureViewRoot] The [LinearLayout] root, to attach to
+     * @param[measureViewList] The list containing all the previews sample view
+     * @param[measureList] The list containing all the [Measure] objects
+     */
     private fun addMeasureView(measureViewRoot : LinearLayout, measureViewList: MutableList<View>, measureList : MutableList<Measure>) {
 
         measureViewList.forEachIndexed { index, measureView ->
@@ -85,6 +99,13 @@ class NewSampleActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * @param[measureViewRoot] The [LinearLayout] root, to attach to
+     * @param[measureViewList] The list containing all the previews sample view
+     * @param[measureView] The view to be removed
+     * @param[measureList] The list containing all the [Measure] objects
+     * @param[measure] The measure to be removed
+     */
     private fun removeMeasureView(measureViewRoot : LinearLayout, measureViewList: MutableList<View>, measureView : View, measureList : MutableList<Measure>, measure : Measure) {
         measureViewRoot.removeView(measureView)
         measureViewList.remove(measureView)

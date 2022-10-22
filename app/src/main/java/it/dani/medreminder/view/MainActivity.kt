@@ -16,6 +16,12 @@ import it.dani.medreminder.persistence.filepersistence.FileSampleDBPersistence
 import it.dani.medreminder.view.add.NewSampleActivity
 import java.io.*
 
+/**
+ * @author Daniele
+ *
+ * This class is the main class of the app
+ */
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
