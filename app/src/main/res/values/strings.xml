@@ -18,9 +18,14 @@
     <string name="measure_type_blood_oxygenation">Blood oxygenation</string>
     <string name="measure_type_blood_pressure">Blood pressure</string>
     <string name="measure_type_glycemia">Glycemia</string>
+    <string name="measure_type_heart_rate_measure_unit">bpm</string>
+    <string name="measure_type_blood_oxygenation_measure_unit">sO2</string>
+    <string name="measure_type_blood_pressure_measure_unit">mmHg</string>
+    <string name="measure_type_glycemia_measure_unit">mg/dL</string>
 
     <string name="measure_type_chooser_content_description">Measure type chooser</string>
     <string name="measure_input_hint">Value</string>
+    <string name="measure_validity_check_fail_message">Please, fill all the value fields</string>
 
     <string name="measure_add_type">Add a new type</string>
     <string name="measure_del_type">Delete this measure type</string>

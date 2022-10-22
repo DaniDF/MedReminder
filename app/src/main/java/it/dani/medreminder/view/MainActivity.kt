@@ -54,21 +54,18 @@ class MainActivity : AppCompatActivity() {
         sampleDB.samples.forEach { sample ->
             this.layoutInflater.inflate(R.layout.sample_view,historyList,false).apply {
 
-                sample.measures.forEachIndexed { index, measure ->
-                    val id = when(index) {
-                        0 -> R.id.sample_number_1 to R.id.sample_number_1_label
-                        1 -> R.id.sample_number_2 to R.id.sample_number_2_label
-                        2 -> R.id.sample_number_3 to R.id.sample_number_3_label
-                        else -> R.id.sample_number_3 to R.id.sample_number_3_label
-                    }
+                sample.measures.firstOrNull()?.let { measure ->
+                    val measureLayoutView = this.findViewById<LinearLayout>(R.id.layout_measure_list)
+                    this@MainActivity.layoutInflater.inflate(R.layout.measure_view,measureLayoutView,false).apply {
+                        this.findViewById<TextView>(R.id.sample_number).apply {
+                            this.text = measure.measureValue.toString()
+                        }
 
-                    this.findViewById<TextView>(id.first).apply {
-                        this.text = measure.measureValue.toString()
-                    }
-
-                    this.findViewById<TextView>(id.second).apply {
-                        this.text = this@MainActivity.resources.getString(measure.measureLabel.humanReadableString)
-                    }
+                        this.findViewById<TextView>(R.id.sample_number_label).apply {
+                            val text = "${this@MainActivity.resources.getString(measure.measureLabel.humanReadableString)}(${this@MainActivity.resources.getString(measure.measureLabel.measure_unit)})"
+                            this.text = text.replace(" ","\n")
+                        }
+                    }.also { measureLayoutView.addView(it) }
                 }
 
                 this.findViewById<TextView>(R.id.sample_datetime_label).apply {

@@ -10,9 +10,9 @@ import java.io.Serializable
  *
  * @param[humanReadableString] A human readable version of the represented type, the reference of the string resource
  */
-enum class MeasureTypes(val humanReadableString : Int) : Serializable {
-    HEART_RATE(R.string.measure_type_heart_rate),
-    BLOOD_OXYGENATION(R.string.measure_type_blood_oxygenation),
-    BLOOD_PRESSURE(R.string.measure_type_blood_pressure),
-    GLYCEMIA(R.string.measure_type_glycemia)
+enum class MeasureTypes(val humanReadableString : Int, val measure_unit : Int) : Serializable {
+    HEART_RATE(R.string.measure_type_heart_rate,R.string.measure_type_heart_rate_measure_unit),
+    BLOOD_OXYGENATION(R.string.measure_type_blood_oxygenation,R.string.measure_type_blood_oxygenation_measure_unit),
+    BLOOD_PRESSURE(R.string.measure_type_blood_pressure,R.string.measure_type_blood_pressure_measure_unit),
+    GLYCEMIA(R.string.measure_type_glycemia,R.string.measure_type_glycemia_measure_unit)
 }

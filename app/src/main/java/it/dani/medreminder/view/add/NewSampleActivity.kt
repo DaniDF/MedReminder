@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import it.dani.medreminder.R
 import it.dani.medreminder.model.Measure
 import it.dani.medreminder.model.MeasureTypes
@@ -29,6 +30,7 @@ import java.time.ZonedDateTime
  */
 
 class NewSampleActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.activity_new_sample)
@@ -41,15 +43,31 @@ class NewSampleActivity : AppCompatActivity() {
 
         this.findViewById<ExtendedFloatingActionButton>(R.id.button_new_sample).apply {
             setOnClickListener {
-                val newSample = Sample(measureList, TimeRef(ZonedDateTime.now()))
-                Intent(this@NewSampleActivity,MainActivity::class.java).apply {
-                    this.putExtra("NEW_SAMPLE",newSample)
-                }.also {
-                    this@NewSampleActivity.startActivity(it)
-                    this@NewSampleActivity.finish()
+                if(this@NewSampleActivity.areValuesValid(measureList)) {
+                    val newSample = Sample(measureList, TimeRef(ZonedDateTime.now()))
+                    Intent(this@NewSampleActivity,MainActivity::class.java).apply {
+                        this.putExtra("NEW_SAMPLE",newSample)
+                    }.also {
+                        this@NewSampleActivity.startActivity(it)
+                        this@NewSampleActivity.finish()
+                    }
+                } else {
+                    Snackbar.make(this@NewSampleActivity.findViewById(R.id.activity_new_sample),
+                        this@NewSampleActivity.resources.getString(R.string.measure_validity_check_fail_message),
+                        Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
+    }
+
+    private fun areValuesValid(measures : List<Measure>) : Boolean {
+        var result = true
+
+        measures.forEach { measure ->
+            result = result && !measure.measureValue.isNaN()
+        }
+
+        return result
     }
 
     /**
@@ -129,7 +147,9 @@ private class LabelSelectorSpinnerSelectedListener(private val measure: Measure)
 private class InputValueTextViewWatcher(private val measure : Measure) : TextWatcher {
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        this.measure.measureValue = p0.toString().toFloat()
+        try {
+            this.measure.measureValue = p0.toString().toFloat()
+        } catch (_: NumberFormatException) {}
     }
     override fun afterTextChanged(p0: Editable?) {}
 

@@ -4,6 +4,9 @@ import com.google.gson.annotations.Expose
 import java.io.Serializable
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
 
 /**
  * @author Daniele
@@ -50,6 +53,7 @@ class TimeRef(@Expose val year : Int,
     }
 
     override fun toString(): String {
-        return "${this.year}/${this.month}/${this.day} - ${this.hour}:${this.min}:${this.sec}"
+        val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(Locale.getDefault())
+        return this.getZonedDateTime().format(dateTimeFormatter)
     }
 }
