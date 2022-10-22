@@ -1,5 +1,6 @@
 package it.dani.medreminder.model
 
+import com.google.gson.annotations.Expose
 import java.io.Serializable
 
 /**
@@ -10,7 +11,7 @@ import java.io.Serializable
  * @param[measureLabel] [MeasureTypes] The type of the measure
  * @param[measureValue] The value of the measure
  */
-data class Measure(var measureLabel : MeasureTypes, var measureValue : Float) : Serializable {
+data class Measure(@Expose var measureLabel : MeasureTypes, @Expose var measureValue : Float) : Serializable {
     override fun toString(): String {
         return "${this.measureLabel}: ${this.measureValue}"
     }

@@ -14,9 +14,12 @@ class FileSampleDBPersistence(private val filename : String) : SampleDBPersisten
 
         val gson = Gson()
 
-        BufferedReader(FileReader(this.filename)).use {
-            result = gson.fromJson(it,SampleDB::class.java)
+        var fileInString: String
+        BufferedReader(FileReader(this.filename)).use {br ->
+            fileInString = br.readText()
         }
+
+        result = gson.fromJson(fileInString,SampleDB::class.java)
 
         return result
     }

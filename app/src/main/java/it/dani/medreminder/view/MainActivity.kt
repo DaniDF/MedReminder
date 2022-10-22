@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val sampleDB = try {
             sampleDBPersistence.loadDB()
         } catch (e : FileNotFoundException) {
+            e.printStackTrace()
             Log.e("SAMPLE_DB_FILE","Error: sampleDB file not found")
             SampleDB()
         }
@@ -55,9 +56,9 @@ class MainActivity : AppCompatActivity() {
 
                 sample.measures.forEachIndexed { index, measure ->
                     val id = when(index) {
-                        1 -> R.id.sample_number_1 to R.id.sample_number_1_label
-                        2 -> R.id.sample_number_2 to R.id.sample_number_2_label
-                        3 -> R.id.sample_number_3 to R.id.sample_number_3_label
+                        0 -> R.id.sample_number_1 to R.id.sample_number_1_label
+                        1 -> R.id.sample_number_2 to R.id.sample_number_2_label
+                        2 -> R.id.sample_number_3 to R.id.sample_number_3_label
                         else -> R.id.sample_number_3 to R.id.sample_number_3_label
                     }
 
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     this.findViewById<TextView>(id.second).apply {
-                        this.text = measure.measureLabel.name
+                        this.text = this@MainActivity.resources.getString(measure.measureLabel.humanReadableString)
                     }
                 }
 

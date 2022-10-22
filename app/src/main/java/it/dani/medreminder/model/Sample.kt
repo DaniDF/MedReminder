@@ -1,7 +1,7 @@
 package it.dani.medreminder.model
 
+import com.google.gson.annotations.Expose
 import java.io.Serializable
-import java.time.LocalDateTime
 
 /**
  * @author Daniele
@@ -11,7 +11,8 @@ import java.time.LocalDateTime
  * @param[measures] The list of measures
  * @param[datetime] When the measure are sampled
  */
-data class Sample(val measures : List<Measure> = ArrayList(), val datetime : LocalDateTime) : Serializable {
+data class Sample(@Expose val measures : List<Measure> = ArrayList(), @Expose val datetime : TimeRef) : Serializable {
+
     override fun toString(): String {
         val result = StringBuilder("${this.datetime}\n")
 

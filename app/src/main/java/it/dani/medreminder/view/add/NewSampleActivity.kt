@@ -18,8 +18,9 @@ import it.dani.medreminder.R
 import it.dani.medreminder.model.Measure
 import it.dani.medreminder.model.MeasureTypes
 import it.dani.medreminder.model.Sample
+import it.dani.medreminder.model.TimeRef
 import it.dani.medreminder.view.MainActivity
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 /**
  * @author Daniele
@@ -40,7 +41,7 @@ class NewSampleActivity : AppCompatActivity() {
 
         this.findViewById<ExtendedFloatingActionButton>(R.id.button_new_sample).apply {
             setOnClickListener {
-                val newSample = Sample(measureList,LocalDateTime.now())
+                val newSample = Sample(measureList, TimeRef(ZonedDateTime.now()))
                 Intent(this@NewSampleActivity,MainActivity::class.java).apply {
                     this.putExtra("NEW_SAMPLE",newSample)
                 }.also {
