@@ -52,8 +52,27 @@ class TimeRef(@Expose val year : Int,
         return this.getZonedDateTime().compareTo(other.getZonedDateTime())
     }
 
-    override fun toString(): String {
+    /**
+     * This method generates the short version of this object
+     *
+     * @return The short string
+     */
+    fun toStringShort() : String {
         val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(Locale.getDefault())
         return this.getZonedDateTime().format(dateTimeFormatter)
+    }
+
+    /**
+     * This method generates the full version of this object
+     *
+     * @return The full string
+     */
+    fun toStringLong() : String {
+        val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withLocale(Locale.getDefault())
+        return this.getZonedDateTime().format(dateTimeFormatter)
+    }
+
+    override fun toString(): String {
+        return this.toStringShort()
     }
 }
