@@ -53,7 +53,7 @@ class NewSampleActivity : AppCompatActivity() {
                     }
                 } else {
                     Snackbar.make(this@NewSampleActivity.findViewById(R.id.activity_new_sample),
-                        this@NewSampleActivity.resources.getString(R.string.measure_validity_check_fail_message),
+                        R.string.measure_validity_check_fail_message,
                         Snackbar.LENGTH_SHORT).show()
                 }
             }

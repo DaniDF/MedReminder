@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:id="@+id/menu_export">
+        <item android:id="@+id/menu_export_csv"
+            android:title="@string/menu_export_menu_csv"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/file_upload"/>
+        <item android:id="@+id/menu_export_json"
+            android:title="@string/menu_export_menu_json" />
+    </group>
+    <group android:id="@+id/menu_import">
+        <item android:id="@+id/menu_import_csv"
+            android:title="@string/menu_import_menu_csv" />
+        <item android:id="@+id/menu_import_json"
+            android:title="@string/menu_import_menu_json" />
+    </group>
+</menu>

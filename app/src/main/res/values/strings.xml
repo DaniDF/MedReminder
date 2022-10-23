@@ -5,6 +5,14 @@
 
     <string name="button_new_sample_string">New sample</string>
 
+    <string name="menu_export_menu_csv">Export in CSV</string>
+    <string name="menu_export_menu_json">Export in JSON</string>
+    <string name="menu_import_menu_csv">Import in CSV</string>
+    <string name="menu_import_menu_json">Import in JSON</string>
+
+    <string name="menu_export_no_activity_available">Sorry but there is not an app for this file type</string>
+    <string name="export_csv_datetime_label">Datetime</string>
+
     <string name="sample_number_default_text">XX</string>
     <string name="sample_label_default_text">label</string>
     <string name="sample_datetime_default_text">January 01, 1990</string>
