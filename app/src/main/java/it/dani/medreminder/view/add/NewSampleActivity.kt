@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
@@ -85,12 +88,26 @@ class NewSampleActivity : AppCompatActivity() {
                 this.setImageResource(R.drawable.remove)
 
                 setOnClickListener {
-                    this@NewSampleActivity.removeMeasureView(measureViewRoot,measureViewList,measureView,measureList,measureList[index])
+                    val disappearAnimation = AnimationUtils.loadAnimation(this@NewSampleActivity,R.anim.disappear).apply {
+                        this.setAnimationListener(object : AnimationListener {
+                            override fun onAnimationStart(p0: Animation?) {}
+                            override fun onAnimationRepeat(p0: Animation?) {}
+                            override fun onAnimationEnd(p0: Animation?) {
+                                this@NewSampleActivity.removeMeasureView(measureViewRoot,measureViewList,measureView,measureList,measureList[index])
+                            }
+
+                        })
+                    }
+                    measureView.startAnimation(disappearAnimation)
+                    for(postIndex in index+1..measureViewList.lastIndex) {
+                        measureViewList[postIndex].startAnimation(AnimationUtils.loadAnimation(this@NewSampleActivity,R.anim.rise))
+                    }
                 }
             }
         }
 
         measureViewList += this.layoutInflater.inflate(R.layout.add_sample_view,measureViewRoot,false).apply {
+            this.startAnimation(AnimationUtils.loadAnimation(this@NewSampleActivity,R.anim.fall))
             val measure = Measure(MeasureTypes.BLOOD_OXYGENATION, Float.NaN)
             measureList += measure
 

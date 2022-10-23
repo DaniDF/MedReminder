@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<ExtendedFloatingActionButton>(R.id.button_new_sample).apply {
             setOnClickListener {
                 Intent(this@MainActivity,NewSampleActivity::class.java).also {
-                    this@MainActivity.startActivity(it)
+                    this@MainActivity.startActivity(it)//,ActivityOptions.makeSceneTransitionAnimation(this@MainActivity).toBundle())
                 }
             }
         }
