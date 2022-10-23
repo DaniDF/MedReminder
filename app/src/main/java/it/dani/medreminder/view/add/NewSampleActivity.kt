@@ -24,7 +24,14 @@ import it.dani.medreminder.model.MeasureTypes
 import it.dani.medreminder.model.Sample
 import it.dani.medreminder.model.TimeRef
 import it.dani.medreminder.view.MainActivity
+import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
+import java.util.concurrent.Executors
+import kotlin.collections.ArrayList
 
 /**
  * @author Daniele
@@ -37,6 +44,10 @@ class NewSampleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.activity_new_sample)
+
+        val dateTextView = this.findViewById<TextView>(R.id.text_current_date)
+        val timeTextView = this.findViewById<TextView>(R.id.text_current_time)
+        this.updateDateTime(dateTextView,timeTextView)
 
         val measureViewLayout = findViewById<LinearLayout>(R.id.layout_measure_list)
         val measureViewList : MutableList<View> = ArrayList()
@@ -63,6 +74,40 @@ class NewSampleActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This method updates every second the passed [dateTextView] and [timeTextView] according to the current date and time
+     *
+     * @param[dateTextView] A [TextView] to show the current date
+     * @param[timeTextView] A [TextView] to show the current time
+     */
+    private fun updateDateTime(dateTextView : TextView, timeTextView : TextView) {
+        Executors.newSingleThreadExecutor().also { exe ->
+            val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(Locale.getDefault())
+            val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(Locale.getDefault())
+            exe.execute {
+                runOnUiThread {
+                    dateTextView.apply {
+                        text = LocalDateTime.now().format(dateFormatter)
+                    }
+
+                    timeTextView.apply {
+                        text = LocalTime.now().format(timeFormatter)
+                    }
+                }
+
+                Thread.sleep(1000)
+
+                this.updateDateTime(dateTextView,timeTextView)
+            }
+        }
+    }
+
+    /**
+     * This method checks is all the measures are not NaN
+     *
+     * @param[measures] A list of measure to check
+     * @return true if all the measureValue are non NaN, false otherwise
+     */
     private fun areValuesValid(measures : List<Measure>) : Boolean {
         var result = true
 

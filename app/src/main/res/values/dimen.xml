@@ -8,4 +8,7 @@
     <dimen name="sample_add_layout_margin">15dp</dimen>
 
     <dimen name="measure_label_max_width">150dp</dimen>
+
+    <dimen name="date_text_size">17sp</dimen>
+    <dimen name="time_text_size">34sp</dimen>
 </resources>
